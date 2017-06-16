@@ -607,6 +607,10 @@ function issecure(req, trustProxy) {
     return false;
   }
 
+  if (req.headers['x-arr-ssl']) {
+    return true;
+  }
+
   // no explicit trust; try req.secure from express
   if (trustProxy !== true) {
     var secure = req.secure;
